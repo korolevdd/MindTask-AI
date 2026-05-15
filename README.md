@@ -27,6 +27,8 @@
    npm run dev
    ```
 
+*Примечание:* Если на Windows возникает ошибка `Using engine type "client"`, я добавил фикс в `schema.prisma`. Обязательно выполните `npx prisma generate` еще раз.
+
 ## Технологический стек
 - React + Vite
 - Express (Backend)
