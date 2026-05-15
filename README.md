@@ -1,11 +1,31 @@
-<div align="center">
+# MindTask AI
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Интеллектуальная система управления задачами с AI-ассистентом, интеллект-картой и канбан-доской.
 
-  <h1>Built with AI Studio</h2>
+## Функционал
+- **Mindmap**: Визуализация задач в виде древовидной структуры (React Flow).
+- **Kanban**: Управление статусами задач перетаскиванием (dnd-kit).
+- **AI Assistant**: Автоматическая декомпозиция задач, семантическая маршрутизация и планирование.
+- **Local-First**: Использование SQLite и локального хранения настроек.
+- **Интеграция**: Базовая архитектура для MCP (Model Context Protocol) и кастомных навыков.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Установка и запуск
+1. Установите зависимости:
+   ```bash
+   npm install
+   ```
+2. Настройте базу данных:
+   ```bash
+   npx prisma migrate dev --name init
+   ```
+3. Запустите в режиме разработки:
+   ```bash
+   npm run dev
+   ```
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
-
-</div>
+## Технологический стек
+- React + Vite
+- Express (Backend)
+- Prisma + SQLite (Persistence)
+- Google Gemini API (AI)
+- Tailwind CSS + shadcn/ui (UI)

@@ -1,0 +1,44 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model TaskNode {
+  id                String   @id @default(cuid())
+  title             String
+  description       String?
+  parentId          String?
+  status            String   @default("inbox") // inbox, planned, in_progress, review, done
+  priority          Int      @default(1)
+  tags              String?  @default("[]") // JSON array of strings
+  aiSummary         String?
+  discussionHistory String?  @default("[]") // JSON array of objects
+  embedding         String?  // JSON array of floats (vector)
+  x                 Float    @default(0)
+  y                 Float    @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  parent            TaskNode?  @relation("ParentChild", fields: [parentId], references: [id], onDelete: Cascade)
+  children          TaskNode[] @relation("ParentChild")
+}
+
+model Settings {
+  id              String  @id @default("default")
+  aiProvider      String  @default("gemini") // gemini, lmstudio, openrouter, custom
+  baseUrl         String?
+  modelName       String? @default("gemini-3-flash-preview")
+  apiKey          String?
+  theme           String  @default("dark")
+}
+
+model Skill {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  enabled     Boolean  @default(true)
+  config      String?  // JSON configuration
+}
