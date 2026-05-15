@@ -1,4 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import Prisma from "@prisma/client";
+
+// Использование дефолтного импорта обеспечивает лучшую совместимость с ESM/tsx в Windows
+const { PrismaClient } = Prisma;
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
