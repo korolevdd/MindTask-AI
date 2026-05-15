@@ -27,7 +27,14 @@
    npm run dev
    ```
 
-*Примечание:* Если на Windows возникает ошибка `Using engine type "client"`, я добавил фикс в `schema.prisma`. Обязательно выполните `npx prisma generate` еще раз.
+*Примечание:* Если на Windows возникает ошибка `PrismaClientConstructorValidationError`, я изменил тип движка на `binary` в `prisma/schema.prisma`. 
+**Важно:** После этого изменения обязательно запустите:
+```bash
+npx prisma generate
+```
+Если ошибка сохраняется, попробуйте установить переменную окружения перед запуском:
+- PowerShell: `$env:PRISMA_CLIENT_ENGINE_TYPE="binary"; npm run dev`
+- CMD: `set PRISMA_CLIENT_ENGINE_TYPE=binary && npm run dev`
 
 ## Технологический стек
 - React + Vite
